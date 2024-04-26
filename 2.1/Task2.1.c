@@ -26,6 +26,7 @@ switch (pid = fork()) {
 	case -1:
 		perror("Fork failed!\n");
 		exit(EXIT_FAILURE);
+        break;
 	case 0:
         srand(time(NULL));
         close(pipefd[0]);
@@ -41,6 +42,7 @@ switch (pid = fork()) {
         }
         close(pipefd[1]);
         exit(EXIT_SUCCESS);
+        break;
 	default:
         char *buf[count];
         close(pipefd[1]);
@@ -70,5 +72,6 @@ switch (pid = fork()) {
         }
         fclose(fp);
         exit(EXIT_SUCCESS);
+        break;
 	}
 }
